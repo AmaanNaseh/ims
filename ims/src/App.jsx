@@ -11,6 +11,7 @@ import UpdateProduct from "./pages/UpdateProduct";
 import CreateProduct from "./pages/CreateProduct";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Cart from "./pages/Cart";
+import Profile from "./pages/Profile";
 import ProductPurchasers from "./pages/ProductPurchasers";
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/cart" element={<Cart />} />;
           <Route
             path="/create-product"

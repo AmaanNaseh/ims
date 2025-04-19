@@ -43,12 +43,15 @@ export default function Navbar() {
             <Link to="/signup">Signup</Link>
           </>
         ) : (
-          <button
-            onClick={handleLogout}
-            className="text-black px-3 py-1 bg-accent rounded ml-2"
-          >
-            Logout
-          </button>
+          <>
+            <Link to="/profile">Profile</Link>
+            <button
+              onClick={handleLogout}
+              className="text-black px-3 py-1 bg-accent rounded ml-2"
+            >
+              Logout
+            </button>
+          </>
         )}
       </div>
     </nav>

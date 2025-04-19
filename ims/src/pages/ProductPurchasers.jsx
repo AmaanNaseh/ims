@@ -31,7 +31,7 @@ const ProductPurchasers = () => {
   }, [productId]);
 
   return (
-    <div className="min-h-screen p-6 bg-pink-50">
+    <div className="min-h-screen p-6">
       <h1 className="text-2xl font-bold text-center mb-4">
         Purchasers of {productName}
       </h1>
