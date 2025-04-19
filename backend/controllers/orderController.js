@@ -7,20 +7,23 @@ exports.bookOrder = async (req, res) => {
 
   try {
     const product = await Product.findById(productId);
-    if (!product || product.quantity < quantity) {
+    if (!product) {
+      return res.status(400).json({ msg: "Product not found" });
+    }
+
+    // Check if there is enough stock, but do not deduct stock
+    if (product.quantity + quantity < quantity) {
       return res.status(400).json({ msg: "Not enough stock" });
     }
 
-    // Deduct the quantity from product stock
-
-    // Store user order on product document
+    // Store user order on product document (No stock deduction here)
     product.orders.push({
       user: req.user.id, // Store user ID
       quantity,
       date: new Date(), // Store the date of the order
     });
 
-    await product.save();
+    await product.save(); // Save the product with the new order
 
     const user = await User.findById(req.user.id);
     user.orderHistory.push({
@@ -28,9 +31,9 @@ exports.bookOrder = async (req, res) => {
       quantity,
       date: new Date(),
     });
-    await user.save();
+    await user.save(); // Save the user’s order history
 
-    // Remove item from cart after successful booking
+    // Remove item from cart after successful booking (No stock deduction)
     const cart = await Cart.findOne({ userId: req.user.id });
     if (cart) {
       cart.products = cart.products.filter(

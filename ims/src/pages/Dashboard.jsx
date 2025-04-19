@@ -72,6 +72,11 @@ export default function Dashboard() {
                 <h2 className="text-lg font-bold mt-2">{product.name}</h2>
                 <p>₹{product.price}</p>
                 <p>Qty: {product.quantity}</p>
+                {product.quantity < 6 ? (
+                  <p>Alert: Low Stock, Please Refill it. </p>
+                ) : (
+                  ""
+                )}
 
                 <div className="mt-3 space-x-2">
                   {user?.role === "admin" ? (

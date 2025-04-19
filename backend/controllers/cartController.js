@@ -10,6 +10,11 @@ exports.addToCart = async (req, res) => {
     const product = await Product.findById(productId);
     if (!product) return res.status(404).send("Product not found");
 
+    // Check if the quantity requested is greater than the available stock
+    if (product.quantity < quantity) {
+      return res.status(400).json({ msg: "Not enough stock available" });
+    }
+
     // Find user's cart, if it exists, otherwise create a new cart
     let cart = await Cart.findOne({ userId });
 

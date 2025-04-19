@@ -35,7 +35,6 @@ export default function Cart() {
       await axios.post(
         "http://localhost:5000/api/orders/book",
         {
-          userId: user._id,
           productId:
             typeof item.productId === "object"
               ? item.productId._id
@@ -49,6 +48,7 @@ export default function Cart() {
         }
       );
 
+      // Update cart after confirming order
       setCartItems(
         cartItems.filter(
           (i) =>
@@ -134,10 +134,7 @@ export default function Cart() {
         <p className="text-gray-600">No items in cart.</p>
       )}
 
-      <button
-        onClick={() => navigate("/products")}
-        className="mt-6 text-blue-500 underline"
-      >
+      <button onClick={() => navigate("/products")} className="mt-6 ">
         Back to Products
       </button>
     </div>
