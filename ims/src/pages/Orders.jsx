@@ -36,7 +36,10 @@ export default function Orders() {
             className="bg-white p-4 shadow-lg z-10 border-[1px] rounded"
           >
             <p>
-              <strong>Product Name:</strong> {order.product?.name || "N/A"}
+              <h2>
+                <strong>Name:</strong>{" "}
+                {order.product?.name || order.productSnapshot?.name || "N/A"}
+              </h2>
             </p>
             <p>
               <strong>Quantity:</strong> {order.quantity}

@@ -12,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-secondary p-4 shadow-md flex justify-between items-center bg-[#00BFA6] z-20">
+    <nav className="bg-secondary p-4 shadow-md flex justify-between items-center bg-green-200 z-20">
       <Link to="/">
         <h1 className="text-xl font-bold hover:scale-105 transition-transform duration-500">
           Inventory Management System

@@ -22,14 +22,16 @@ const userSchema = new mongoose.Schema({
   },
   orderHistory: [
     {
-      product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
-      },
+      product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
       quantity: Number,
-      date: {
-        type: Date,
-        default: Date.now,
+      date: Date,
+      productSnapshot: {
+        name: String,
+        price: Number,
+        image: {
+          data: Buffer,
+          contentType: String,
+        },
       },
     },
   ],

@@ -30,7 +30,13 @@ exports.bookOrder = async (req, res) => {
       product: product._id,
       quantity,
       date: new Date(),
+      productSnapshot: {
+        name: product.name,
+        price: product.price,
+        image: product.image,
+      },
     });
+
     await user.save(); // Save the user’s order history
 
     // Remove item from cart after successful booking (No stock deduction)

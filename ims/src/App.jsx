@@ -13,6 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import ProductPurchasers from "./pages/ProductPurchasers";
+import Attributions from "./pages/Attributions";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/attributions" element={<Attributions />} />
           <Route
             path="/cart"
             element={
