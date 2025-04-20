@@ -17,14 +17,22 @@ import ProductPurchasers from "./pages/ProductPurchasers";
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-primary text-textDark">
-        <Navbar />
+      <Navbar />
+      <div className="min-h-[75vh] my-8">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/cart" element={<Cart />} />;
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
+          ;
           <Route
             path="/create-product"
             element={
@@ -70,8 +78,8 @@ export default function App() {
             }
           />
         </Routes>
-        <Footer />
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }

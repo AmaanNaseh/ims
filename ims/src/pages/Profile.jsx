@@ -48,14 +48,14 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md flex flex-col items-center justify-center gap-2">
+    <div className="max-w-md mx-auto mt-10 p-6 z-10 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center gap-2 border-[1px]">
       <h2 className="text-2xl font-bold mb-4 text-center ">Your Profile</h2>
       {message && <p className="text-center text-pink-600">{message}</p>}
       <p className="my-2">Name: {formData.username}</p>
       <p className="my-2">Email: {formData.email}</p>
       <button
         onClick={handleDelete}
-        className="bg-red-500 text-white py-2 my-4 w-fit px-4 rounded hover:bg-red-600"
+        className="bg-red-500 text-white py-2 my-4 w-fit px-4 rounded hover:scale-105 font-bold"
       >
         Delete Account
       </button>

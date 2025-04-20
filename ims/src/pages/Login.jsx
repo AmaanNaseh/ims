@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ export default function Login() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg rounded-xl">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-lg z-10 border-[1px] rounded-xl flex flex-col items-center justify-center gap-2">
       <h2 className="text-xl font-bold mb-4 text-center">Login</h2>
       <input
         className="w-full mb-2 p-2 border rounded"
@@ -55,10 +55,16 @@ export default function Login() {
       />
       <button
         onClick={handleLogin}
-        className="bg-accent text-black px-4 py-2 rounded w-full mt-2"
+        className="bg-accent text-black px-4 py-2 rounded mt-2 border-[2px] border-black hover:scale-105"
       >
         Login
       </button>
+      <p className="mt-4">
+        Don't have an account?{" "}
+        <Link to={"/signup"} className="text-blue-500 underline font-bold">
+          Signup
+        </Link>
+      </p>
     </div>
   );
 }

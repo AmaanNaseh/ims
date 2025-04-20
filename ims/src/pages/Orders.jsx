@@ -9,7 +9,12 @@ export default function Orders() {
     const res = await axios.get("http://localhost:5000/api/orders/history", {
       headers: { Authorization: `Bearer ${token}` },
     });
-    setOrders(res.data);
+
+    const sortedOrders = res.data.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+
+    setOrders(sortedOrders);
   };
 
   useEffect(() => {
@@ -19,19 +24,34 @@ export default function Orders() {
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4 text-center">Your Orders</h2>
-      <ul className="space-y-4">
+      {orders.length === 0 ? (
+        <p className="text-gray-600 text-center">No orders currently.</p>
+      ) : (
+        ""
+      )}
+      <ul className="space-y-4 w-fit flex flex-wrap items-center gap-8 p-4 mx-auto">
         {orders.map((order, idx) => (
-          <li key={idx} className="bg-white p-4 shadow rounded">
+          <li
+            key={idx}
+            className="bg-white p-4 shadow-lg z-10 border-[1px] rounded"
+          >
             <p>
-              <strong>Product:</strong> {order.product?.name || "N/A"}
+              <strong>Product Name:</strong> {order.product?.name || "N/A"}
             </p>
             <p>
               <strong>Quantity:</strong> {order.quantity}
             </p>
             <p>
-              <strong>Date:</strong>{" "}
+              <strong>Order Date:</strong>{" "}
               {order.date
-                ? new Date(order.date).toLocaleString()
+                ? new Date(order.date).toLocaleString("en-US", {
+                    hour: "numeric",
+                    minute: "2-digit",
+                    hour12: true,
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })
                 : "Not Available"}
             </p>
           </li>

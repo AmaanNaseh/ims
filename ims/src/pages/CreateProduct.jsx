@@ -35,9 +35,14 @@ export default function CreateProduct() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 bg-white p-6 rounded shadow">
-      <h1 className="text-2xl font-bold text-accent mb-4">Add New Product</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="max-w-md mx-auto mt-8 bg-white shadow-lg p-6 z-10 border-[1px] rounded-xl">
+      <h1 className="text-2xl font-bold text-accent mb-4 text-center">
+        Add New Product
+      </h1>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center justify-center gap-2"
+      >
         <input
           type="text"
           placeholder="Product Name"
@@ -68,7 +73,7 @@ export default function CreateProduct() {
 
         <button
           type="submit"
-          className="w-full bg-accent text-black py-2 rounded"
+          className="w-fit px-4 py-2 bg-accent text-black rounded border-[2px] border-black hover:scale-105"
         >
           Create Product
         </button>

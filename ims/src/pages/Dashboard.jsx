@@ -30,9 +30,14 @@ export default function Dashboard() {
 
   // Handle product deletion (only for the admin)
   const handleDelete = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this product?"
+    );
+    if (!confirmDelete) return;
+
     try {
       await API.delete(`/products/${id}`);
-      fetchProducts(); // Refresh product list after deletion
+      fetchProducts();
     } catch (err) {
       console.error("Error deleting product:", err);
     }
@@ -46,33 +51,36 @@ export default function Dashboard() {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold text-accent mb-4">Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <h1 className="text-2xl font-bold text-accent mb-4">My Products</h1>
+      <div className="flex flex-wrap items-center gap-8">
         {products.length > 0 ? (
           products
             .filter((product) => product.addedBy.username === user?.username) // Filter products based on username
             .map((product) => (
               <div
                 key={product._id}
-                className="border rounded p-4 shadow bg-white"
+                className="border rounded p-4 shadow min-w-[300px] lg:min-w-[320px] min-h-[360px] bg-[#F9FAFB]"
               >
-                <img
-                  src={`data:${product.image?.contentType};base64,${btoa(
-                    new Uint8Array(product.image?.data?.data).reduce(
-                      (data, byte) => data + String.fromCharCode(byte),
-                      ""
-                    )
-                  )}`}
-                  alt={product.name}
-                  className="w-full h-40 object-cover rounded"
-                />
-                <p className="text-sm text-gray-600">
+                <div className="w-[150px] h-[150px] mx-auto flex items-center justify-center my-4">
+                  <img
+                    src={`data:${product.image?.contentType};base64,${btoa(
+                      new Uint8Array(product.image?.data?.data).reduce(
+                        (data, byte) => data + String.fromCharCode(byte),
+                        ""
+                      )
+                    )}`}
+                    alt={product.name}
+                    className="w-full h-full"
+                  />
+                </div>
+
+                <p className="text-sm text-gray-600 text-center">
                   Uploaded by: {product.addedBy.username}
                 </p>
-                <h2 className="text-lg font-bold mt-2">{product.name}</h2>
-                <p>₹{product.price}</p>
-                <p>Qty: {product.quantity}</p>
-                {product.quantity < 6 ? (
+                <h2 className="text-lg font-bold mt-2">Name: {product.name}</h2>
+                <p>Price: ₹{product.price}</p>
+                <p>Quantity: {product.quantity}</p>
+                {product.quantity < 101 ? (
                   <p>Alert: Low Stock, Please Refill it. </p>
                 ) : (
                   ""
@@ -83,21 +91,20 @@ export default function Dashboard() {
                     <>
                       <button
                         onClick={() => handleDelete(product._id)}
-                        className="bg-red-500 text-white px-3 py-1 rounded"
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:scale-105 font-bold"
                       >
                         Delete
                       </button>
                       <button
                         onClick={() => handleUpdate(product._id)}
-                        className="bg-yellow-500 text-white px-3 py-1 rounded"
+                        className="bg-yellow-500 text-white px-3 py-1 rounded hover:scale-105 font-bold"
                       >
                         Edit
                       </button>
-                      <Link
-                        to={`/products/${product._id}/purchasers`}
-                        className="text-sm text-white bg-pink-500 px-3 py-1 rounded hover:bg-pink-600"
-                      >
-                        View Purchasers
+                      <Link to={`/products/${product._id}/purchasers`}>
+                        <button className="text-white bg-[#4CAF50] px-3 py-1 rounded hover:scale-105 font-bold">
+                          Orders
+                        </button>
                       </Link>
                     </>
                   ) : (

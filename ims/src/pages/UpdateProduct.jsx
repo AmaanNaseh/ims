@@ -60,11 +60,10 @@ export default function UpdateProduct() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
+    <div className="max-w-md mx-auto p-6 z-10 border-[1px] bg-white rounded shadow flex flex-col items-center justify-center gap-2">
       <h1 className="text-2xl mb-4 font-semibold text-accent">
         Update Product
       </h1>
-
       <input
         className="w-full mb-2 p-2 border rounded"
         placeholder="Name"
@@ -83,7 +82,6 @@ export default function UpdateProduct() {
         value={form.quantity}
         onChange={(e) => setForm({ ...form, quantity: e.target.value })}
       />
-
       {/* Image Upload */}
       <input
         type="file"
@@ -97,7 +95,6 @@ export default function UpdateProduct() {
           }
         }}
       />
-
       {preview && (
         <img
           src={preview}
@@ -105,10 +102,9 @@ export default function UpdateProduct() {
           className="w-full h-40 object-cover rounded mb-3"
         />
       )}
-
       <button
         onClick={handleUpdate}
-        className="bg-accent text-black w-full py-2 rounded mt-3"
+        className="w-fit px-4 py-2 bg-accent text-black rounded border-[2px] border-black hover:scale-105"
       >
         Update
       </button>

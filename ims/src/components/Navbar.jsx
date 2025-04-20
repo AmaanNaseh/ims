@@ -12,9 +12,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-secondary p-4 shadow-md flex justify-between items-center">
+    <nav className="bg-secondary p-4 shadow-md flex justify-between items-center bg-[#00BFA6] z-20">
       <Link to="/">
-        <h1 className="text-xl font-bold">Inventory Management System</h1>
+        <h1 className="text-xl font-bold hover:scale-105 transition-transform duration-500">
+          Inventory Management System
+        </h1>
       </Link>
 
       <div className="space-x-4">
@@ -47,7 +49,7 @@ export default function Navbar() {
             <Link to="/profile">Profile</Link>
             <button
               onClick={handleLogout}
-              className="text-black px-3 py-1 bg-accent rounded ml-2"
+              className="bg-red-500 text-white py-2 w-fit px-4 rounded hover:scale-105 font-bold"
             >
               Logout
             </button>

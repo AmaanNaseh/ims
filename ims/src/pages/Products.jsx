@@ -84,32 +84,37 @@ export default function Products() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold text-accent mb-4">Products</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="flex flex-wrap items-center gap-8">
         {products.map((p) => (
-          <div key={p._id} className="border rounded p-4 shadow bg-white">
-            <img
-              src={`data:${p.image?.contentType};base64,${btoa(
-                new Uint8Array(p.image?.data?.data).reduce(
-                  (data, byte) => data + String.fromCharCode(byte),
-                  ""
-                )
-              )}`}
-              alt={p.name}
-              className="w-full h-40 object-cover rounded"
-            />
+          <div
+            key={p._id}
+            className="border rounded p-4 shadow min-w-[300px] lg:min-w-[320px] min-h-[360px] bg-[#F9FAFB]"
+          >
+            <div className="w-[150px] h-[150px] mx-auto flex items-center justify-center my-4">
+              <img
+                src={`data:${p.image?.contentType};base64,${btoa(
+                  new Uint8Array(p.image?.data?.data).reduce(
+                    (data, byte) => data + String.fromCharCode(byte),
+                    ""
+                  )
+                )}`}
+                alt={p.name}
+                className="w-full h-full"
+              />
+            </div>
 
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 text-center">
               Uploaded by: {p.addedBy?.username || "Unknown"}
             </p>
-            <h2 className="text-lg font-bold mt-2">{p.name}</h2>
-            <p>₹{p.price}</p>
-            <p>Qty: {p.quantity}</p>
+            <h2 className="text-lg font-bold mt-2">Name: {p.name}</h2>
+            <p>Price: ₹{p.price}</p>
+            <p>Quantity: {p.quantity}</p>
 
             <div className="mt-3 space-x-2">
               <button
                 onClick={() => handleAddToCart(p)}
                 disabled={p.quantity === 0}
-                className="bg-accent text-black px-3 py-1 rounded"
+                className="bg-accent text-black px-3 py-1 rounded w-fit border-[2px] border-black hover:scale-105"
               >
                 {p.quantity > 0 ? "Add to Cart" : "Out of Stock"}
               </button>

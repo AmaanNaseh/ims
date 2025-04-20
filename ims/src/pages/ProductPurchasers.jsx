@@ -45,7 +45,7 @@ const ProductPurchasers = () => {
           <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden border border-pink-200">
             <thead className="bg-pink-100">
               <tr>
-                <th className="py-2 px-4 text-left">Username</th>
+                <th className="py-2 px-4 text-left">User Name</th>
                 <th className="py-2 px-4 text-left">Email</th>
                 <th className="py-2 px-4 text-left">Quantity</th>
                 <th className="py-2 px-4 text-left">Order Date</th>
