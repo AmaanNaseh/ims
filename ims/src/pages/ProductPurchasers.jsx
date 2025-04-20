@@ -42,7 +42,7 @@ const ProductPurchasers = () => {
         </p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden border border-pink-200">
+          <table className="min-w-fit text-[12px] md:text-lg md:min-w-[80%] mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-pink-200">
             <thead className="bg-pink-100">
               <tr>
                 <th className="py-2 px-4 text-left">User Name</th>

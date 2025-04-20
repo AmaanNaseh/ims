@@ -19,7 +19,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="min-h-[75vh] my-8">
+      <div className="min-h-screen my-8">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

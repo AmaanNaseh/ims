@@ -60,6 +60,11 @@ exports.getOrderHistory = async (req, res) => {
     const user = await User.findById(req.user.id).populate(
       "orderHistory.product"
     );
+
+    if (!user) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+
     res.json(user.orderHistory);
   } catch (error) {
     console.error(error);

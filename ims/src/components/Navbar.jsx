@@ -1,6 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
+import menuIcon from "../assets/menuIcon.png";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [isSideNav, setIsSideNav] = useState(false);
+
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const isAdmin = user?.role === "admin";
@@ -12,14 +16,81 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-secondary p-4 shadow-md flex justify-between items-center bg-green-200 z-20">
+    <nav className="sticky top-0 g-secondary p-4 shadow-md flex justify-between items-center bg-green-200 z-20">
       <Link to="/">
-        <h1 className="text-xl font-bold hover:scale-105 transition-transform duration-500">
+        <h1 className="text-sm md:text-lg lg:text-xl font-bold hover:scale-105 transition-transform duration-500">
           Inventory Management System
         </h1>
       </Link>
 
-      <div className="space-x-4">
+      <img
+        src={menuIcon}
+        className="w-[25px] h-[25px] lg:hidden"
+        alt="..."
+        onClick={() => {
+          setIsSideNav(!isSideNav);
+        }}
+      />
+
+      {isSideNav ? (
+        <div className="bg-green-200 z-20 fixed top-[57px] right-0 px-8 py-4 pb-20 lg:hidden">
+          <ul className="flex flex-col items-center justify-center gap-4">
+            {isAdmin ? (
+              <>
+                <Link
+                  to="/create-product"
+                  className="text-black px-3 py-1 bg-accent rounded ml-2"
+                >
+                  <li>Add Product</li>
+                </Link>
+
+                <Link to="/dashboard">
+                  <li>Dashboard</li>
+                </Link>
+              </>
+            ) : (
+              ""
+            )}
+
+            <Link to="/products">
+              <li>Products</li>
+            </Link>
+            <Link to="/cart">
+              <li>Carts</li>
+            </Link>
+            <Link to="/orders">
+              <li>Orders</li>
+            </Link>
+
+            {!user ? (
+              <>
+                <Link to="/login">
+                  <li>Login</li>
+                </Link>
+                <Link to="/signup">
+                  <li>Signup</li>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/profile">
+                  <li>Profile</li>
+                </Link>
+                <li
+                  onClick={handleLogout}
+                  className="bg-red-500 text-white py-2 w-fit px-4 rounded hover:scale-105 font-bold"
+                >
+                  Logout
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
+
+      <div className="hidden lg:block space-x-4">
         {isAdmin ? (
           <>
             <Link

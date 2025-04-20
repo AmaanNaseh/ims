@@ -35,7 +35,7 @@ export default function CreateProduct() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 bg-white shadow-lg p-6 z-10 border-[1px] rounded-xl">
+    <div className="max-w-[300px] md:max-w-md mx-auto mt-8 bg-white shadow-lg p-6 z-10 border-[1px] rounded-xl">
       <h1 className="text-2xl font-bold text-accent mb-4 text-center">
         Add New Product
       </h1>

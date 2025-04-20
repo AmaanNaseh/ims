@@ -60,7 +60,7 @@ export default function UpdateProduct() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 z-10 border-[1px] bg-white rounded shadow flex flex-col items-center justify-center gap-2">
+    <div className="max-w-[300px] md:max-w-md mx-auto p-6 z-10 border-[1px] bg-white rounded shadow flex flex-col items-center justify-center gap-2">
       <h1 className="text-2xl mb-4 font-semibold text-accent">
         Update Product
       </h1>

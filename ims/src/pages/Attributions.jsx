@@ -35,6 +35,12 @@ const Attributions = () => {
         <a href="https://www.freepik.com/free-vector/team-online-store-working-with-customer_4530381.htm#fromView=keyword&page=1&position=1&uuid=b805f904-106b-4e3c-877b-d505a48872b0&query=Inventory+Management+System">
           Image by katemangostar on Freepik
         </a>
+        <a
+          href="https://www.flaticon.com/free-icons/hamburger"
+          title="hamburger icons"
+        >
+          Hamburger icons created by Lizel Arina - Flaticon
+        </a>
       </div>
     </>
   );
