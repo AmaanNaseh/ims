@@ -61,6 +61,7 @@ export default function Cart() {
         )
       );
       alert("Order confirmed!");
+      navigate("/orders");
     } catch (err) {
       console.error(
         "Error confirming order:",

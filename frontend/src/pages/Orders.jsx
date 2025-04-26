@@ -35,12 +35,10 @@ export default function Orders() {
             key={idx}
             className="bg-white p-4 shadow-lg z-10 border-[1px] rounded"
           >
-            <p>
-              <h2>
-                <strong>Name:</strong>{" "}
-                {order.product?.name || order.productSnapshot?.name || "N/A"}
-              </h2>
-            </p>
+            <h2>
+              <strong>Name:</strong>{" "}
+              {order.product?.name || order.productSnapshot?.name || "N/A"}
+            </h2>
             <p>
               <strong>Quantity:</strong> {order.quantity}
             </p>

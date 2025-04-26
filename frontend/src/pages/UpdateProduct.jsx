@@ -53,7 +53,7 @@ export default function UpdateProduct() {
       });
 
       alert("Product updated!");
-      navigate("/products");
+      navigate("/dashboard");
     } catch (err) {
       alert("Failed to update product");
     }

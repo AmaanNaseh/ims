@@ -31,7 +31,7 @@ export default function Signup() {
       localStorage.setItem("user", JSON.stringify(data.user));
 
       // Redirect to home or other page
-      window.location.href = "/"; // Redirect to home page, you can change this URL
+      window.location.href = "/login"; // Redirect to home page, you can change this URL
     } catch (error) {
       // Handle error response
       if (error.response) {

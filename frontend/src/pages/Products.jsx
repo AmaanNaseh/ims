@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
 
 export default function Products() {
@@ -6,6 +7,8 @@ export default function Products() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState(null); // Add user state
+
+  const navigate = useNavigate();
 
   // Save cart to localStorage when cart changes
   useEffect(() => {
@@ -75,6 +78,7 @@ export default function Products() {
       localStorage.setItem("cart", JSON.stringify(updatedProducts)); // Update cart in localStorage
 
       alert("Added to cart!");
+      navigate("/cart");
     } catch (err) {
       console.error(err);
       alert("Failed to add to cart.");

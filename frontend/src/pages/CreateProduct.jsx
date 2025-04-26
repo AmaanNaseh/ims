@@ -28,7 +28,7 @@ export default function CreateProduct() {
       });
 
       alert("Product created!");
-      navigate("/products");
+      navigate("/dashboard");
     } catch (err) {
       alert("Failed to create product");
     }

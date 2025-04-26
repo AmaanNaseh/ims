@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 g-secondary p-4 shadow-md flex justify-between items-center bg-green-200 z-20">
+    <nav className="sticky top-0 g-secondary p-4 shadow-md flex justify-between items-center bg-green-400 z-20">
       <Link to="/">
         <h1 className="text-sm md:text-lg lg:text-xl font-bold hover:scale-105 transition-transform duration-500">
           Inventory Management System
@@ -33,7 +33,7 @@ export default function Navbar() {
       />
 
       {isSideNav ? (
-        <div className="bg-green-200 z-20 fixed top-[57px] right-0 px-8 py-4 pb-20 lg:hidden">
+        <div className="bg-green-400 z-20 fixed top-[57px] right-0 px-8 py-4 pb-20 lg:hidden">
           <ul className="flex flex-col items-center justify-center gap-4">
             {isAdmin ? (
               <>
@@ -52,15 +52,21 @@ export default function Navbar() {
               ""
             )}
 
-            <Link to="/products">
-              <li>Products</li>
-            </Link>
-            <Link to="/cart">
-              <li>Carts</li>
-            </Link>
-            <Link to="/orders">
-              <li>Orders</li>
-            </Link>
+            {user ? (
+              <>
+                <Link to="/products">
+                  <li>Products</li>
+                </Link>
+                <Link to="/cart">
+                  <li>Carts</li>
+                </Link>
+                <Link to="/orders">
+                  <li>Orders</li>
+                </Link>
+              </>
+            ) : (
+              ""
+            )}
 
             {!user ? (
               <>
@@ -106,9 +112,15 @@ export default function Navbar() {
           ""
         )}
 
-        <Link to="/products">Products</Link>
-        <Link to="/cart">Cart</Link>
-        <Link to="/orders">Orders</Link>
+        {user ? (
+          <>
+            <Link to="/products">Products</Link>
+            <Link to="/cart">Cart</Link>
+            <Link to="/orders">Orders</Link>
+          </>
+        ) : (
+          ""
+        )}
 
         {!user ? (
           <>
