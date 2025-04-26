@@ -86,7 +86,7 @@ export default function Products() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-10">
       <h1 className="text-2xl font-bold text-accent mb-4">Products</h1>
       <div className="flex flex-wrap items-center gap-8">
         {products.map((p) => (

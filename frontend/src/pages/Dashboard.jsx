@@ -50,8 +50,17 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold text-accent mb-4">My Products</h1>
+    <div className="p-10">
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold text-accent mb-4">My Products</h1>
+        <Link
+          to={"/create-product"}
+          className="text-white bg-[#4CAF50] px-3 py-1 rounded hover:scale-105 font-bold"
+        >
+          Add Product
+        </Link>
+      </div>
+
       <div className="flex flex-wrap items-center gap-8">
         {products.length > 0 ? (
           products
