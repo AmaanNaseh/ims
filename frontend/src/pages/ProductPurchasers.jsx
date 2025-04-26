@@ -41,9 +41,9 @@ const ProductPurchasers = () => {
           No one has purchased this product yet.
         </p>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-fit text-[12px] md:text-lg md:min-w-[80%] mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-pink-200">
-            <thead className="bg-pink-100">
+        <div className="">
+          <table className="min-w-fit text-[12px] md:text-lg md:min-w-[80%] mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-[#E3CFBB]">
+            <thead className="bg-[#E3CFBB]">
               <tr>
                 <th className="py-2 px-4 text-left">User Name</th>
                 <th className="py-2 px-4 text-left">Email</th>

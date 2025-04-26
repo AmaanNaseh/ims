@@ -29,8 +29,9 @@ const Profile = () => {
     fetchProfile();
   }, []);
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete your account?"))
@@ -40,7 +41,7 @@ const Profile = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
       localStorage.removeItem("token");
-      window.location.href = "/login"; // Redirect to login
+      window.location.href = "/signup"; // Redirect to login
     } catch (err) {
       console.error(err);
       setMessage("Delete failed");

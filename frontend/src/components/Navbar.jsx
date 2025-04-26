@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 g-secondary p-4 shadow-md flex justify-between items-center bg-green-400 z-20">
+    <nav className="sticky top-0 g-secondary p-4 shadow-md flex justify-between items-center bg-[#D7BB9E] z-20">
       <Link to="/">
         <h1 className="text-sm md:text-lg lg:text-xl font-bold hover:scale-105 transition-transform duration-500">
           Inventory Management System
@@ -33,7 +33,7 @@ export default function Navbar() {
       />
 
       {isSideNav ? (
-        <div className="bg-green-400 z-20 fixed top-[57px] right-0 px-8 py-4 pb-20 lg:hidden">
+        <div className="bg-[#D7BB9E] z-20 fixed top-[57px] right-0 px-8 py-4 pb-20 lg:hidden">
           <ul className="flex flex-col items-center justify-center gap-4">
             {isAdmin ? (
               <>
