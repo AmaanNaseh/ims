@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { backendAPI } from "../utils/backendAPI";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -14,13 +15,10 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        {
-          email: form.email,
-          password: form.password,
-        }
-      );
+      const response = await axios.post(`${backendAPI}/api/auth/login`, {
+        email: form.email,
+        password: form.password,
+      });
 
       const { token, user } = response.data;
 

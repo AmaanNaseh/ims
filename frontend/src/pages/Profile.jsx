@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { backendAPI } from "../utils/backendAPI";
 
 const Profile = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/profile", {
+        const res = await axios.get(`${backendAPI}/api/auth/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setFormData({
@@ -37,7 +38,7 @@ const Profile = () => {
     if (!window.confirm("Are you sure you want to delete your account?"))
       return;
     try {
-      await axios.delete("http://localhost:5000/api/auth/profile", {
+      await axios.delete(`${backendAPI}/api/auth/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       localStorage.removeItem("token");

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../utils/api";
+import { backendAPI } from "../utils/backendAPI";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -58,7 +59,7 @@ export default function Products() {
 
     try {
       // Make API request to add item to the cart
-      await API.post("http://localhost:5000/api/cart/add", {
+      await API.post(`${backendAPI}/api/cart/add`, {
         userId: user._id, // Now user._id is available
         productId: product._id,
         quantity,
@@ -71,7 +72,7 @@ export default function Products() {
       setProducts(updatedProducts);
 
       // Update the backend product quantity in the database
-      await API.put(`http://localhost:5000/api/products/${product._id}`, {
+      await API.put(`${backendAPI}/api/products/${product._id}`, {
         quantity: product.quantity - quantity,
       });
 

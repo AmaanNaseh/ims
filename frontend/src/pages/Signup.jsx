@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { backendAPI } from "../utils/backendAPI";
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -14,15 +15,12 @@ export default function Signup() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/signup",
-        {
-          username: form.username,
-          email: form.email,
-          password: form.password,
-          role: form.role, // Add role if required
-        }
-      );
+      const response = await axios.post(`${backendAPI}/api/auth/signup`, {
+        username: form.username,
+        email: form.email,
+        password: form.password,
+        role: form.role, // Add role if required
+      });
 
       const data = response.data;
 

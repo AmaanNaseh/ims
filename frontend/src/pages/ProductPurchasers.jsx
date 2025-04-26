@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { backendAPI } from "../utils/backendAPI";
 
 const ProductPurchasers = () => {
   const { productId } = useParams(); // URL param
@@ -12,7 +13,7 @@ const ProductPurchasers = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:5000/api/products/${productId}/purchasers`,
+          `${backendAPI}/api/products/${productId}/purchasers`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

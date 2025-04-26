@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { backendAPI } from "../utils/backendAPI";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
 
   const getOrders = async () => {
     const token = localStorage.getItem("token");
-    const res = await axios.get("http://localhost:5000/api/orders/history", {
+    const res = await axios.get(`${backendAPI}/api/orders/history`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

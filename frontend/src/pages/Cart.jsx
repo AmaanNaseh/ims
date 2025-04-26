@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { backendAPI } from "../utils/backendAPI";
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -12,9 +13,7 @@ export default function Cart() {
       if (!user) return;
 
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/cart/${user._id}`
-        );
+        const res = await axios.get(`${backendAPI}/api/cart/${user._id}`);
         setCartItems(res.data.products || []);
       } catch (err) {
         console.error(
@@ -33,7 +32,7 @@ export default function Cart() {
       const token = localStorage.getItem("token"); // Assuming you store JWT in localStorage
 
       await axios.post(
-        "http://localhost:5000/api/orders/book",
+        `${backendAPI}/api/orders/book`,
         {
           productId:
             typeof item.productId === "object"
@@ -79,7 +78,7 @@ export default function Cart() {
           : item.productId;
 
       // Call the backend to reject the item and remove it from the cart
-      await axios.post("http://localhost:5000/api/cart/reject", {
+      await axios.post(`${backendAPI}/api/cart/reject`, {
         userId: user._id,
         productId,
         quantity: item.quantity,
